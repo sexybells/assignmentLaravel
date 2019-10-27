@@ -12,12 +12,23 @@
                 </div>
                 <form action="{{ url('/post') }}" method="post">
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <input type="text" class="form-control" name="title-blog" placeholder="Enter title">
                     </div>
+
                     <div class="form-group">
-                        <textarea class="form-control" name="content-blog" placeholder="Enter title"></textarea>
+                        <textarea class="form-control" name="content-blog" placeholder="Enter Content"></textarea>
                     </div>
+
                     <div class="form-group">
                         <select class="form-control" name="category-blog">
                             <option>Select category</option>
@@ -26,6 +37,7 @@
                             @endforeach
                         </select>
                     </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -43,10 +55,10 @@
                 <div class="body-card col-md-12 col-lg-12">
                     <div class="title-blog">
                         <a href="{{ url('/post/'.$post->id) }}"><p>{{ $post->title }}</p></a>
-                        <p style="font-size: 18px;">#{{ $post->category->name }}</p>
+                        <p style="font-size: 13px;"><i>{{ $post->category->name }}</i></p>
                     </div>
                     <div class="content-blog">
-                        <span>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </span>
+                        <p>{{ $post->content }}</p>
                     </div>
                 </div>
                 <div class="footer-card col-md-12 col-lg-12">

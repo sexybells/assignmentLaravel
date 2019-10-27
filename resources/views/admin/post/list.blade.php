@@ -25,6 +25,11 @@
                             <td>{{ $post->category->name }}</td>
                             <td>{{ $post->admin->name }}</td>
                             <td>{{ $post->created_at->format('d-m-Y') }}</td>
+                            <form action="{{ route('delete',[$post['id']] ) }}" method="POST">
+                                @csrf
+                                <input type="hidden" value="{{  $post['id'] }}">
+                                <td><input onclick="return confirm('Are you sure you want to delete this user?');" type="submit" value="Delete" class="btn btn-danger"></td>
+                            </form>
                         </tr>
                         @endforeach
                     </tbody>

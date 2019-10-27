@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     });
     Route::prefix('/posts')->group(function() {
         Route::get('/list', 'Admin\PostController@index');
+        Route::post('delete/{id}','Admin\PostController@destroy')->name('delete');
     });
     Route::prefix('/comments')->group(function() {
         Route::get('/list', 'Admin\CommentController@index');

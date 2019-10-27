@@ -30,13 +30,22 @@
                         <form action="{{ url('/comment_post/'.$post->id) }}" method="post" style="padding: 15px 0;">
                             @csrf
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Enter comment" name="content-comment">
+                                <input type="text" class="form-control @error('content-comment') is-invalid @enderror" placeholder="Enter comment" name="content-comment">
+                                @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 							</div>
 							<button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                         @foreach ($comments as $comment)
                         @if($comment->is_active == true)
-                        <div style="margin: 5px; 0">
+                        <div style="margin: 5px; ">
                                 <div class="comment-user" style="display: inline-block; background: #f2f4f6; border-radius: 10px; padding: 5px; position: relative;">
                                     @if(Auth::user()->role == 2)
                                         <i class="fas fa-ellipsis-v" style="position: absolute; right: -15px; cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="modal_hide({{ $comment->id }})" title="Hide commet"></i>

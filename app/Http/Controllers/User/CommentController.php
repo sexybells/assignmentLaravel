@@ -9,7 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+
+
+
     public function store(Request $request, $id) {
+        $request->validate([
+            'content-comment' => 'required|content-comment',
+        ],
+            [
+                'content-comment.required'=>'không được để trống!',
+            ]);
          $comment = new Comment();
          $comment->post_id = $id;
          $comment->content = $request->input('content-comment');

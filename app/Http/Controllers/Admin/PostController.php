@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Comment;
 
 class PostController extends Controller
 {
@@ -82,6 +83,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $post = Post::find($id);
+
+        // $post->delete();
+        // $comment=Comment::where('post_id', $id);
+        // $comment->delete();
+
+
+        // return redirect()->route('comment.index');
     }
 }
