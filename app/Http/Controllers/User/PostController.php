@@ -11,17 +11,17 @@ use App\Post;
 class PostController extends Controller
 {
     public function store(Request $request) {
-        $request->validate([
-            'title-blog' => 'required|title-blog',
-            'content-blog' => 'required|content-blog',
+        // $request->validate([
+        //     'title-blog' => 'required|title-blog',
+        //     'content-blog' => 'required|content-blog',
 
 
-        ],
-            [
-                'title-blog.required'=>' Tiêu đê không được để trống!',
-                'content-blog.required'=>'Nội dung không được để trống!',
+        // ],
+        //     [
+        //         'title-blog.required'=>' Tiêu đê không được để trống!',
+        //         'content-blog.required'=>'Nội dung không được để trống!',
 
-            ]);
+        //     ]);
         $post = new Post();
         $post->title = $request->input('title-blog');
         $post->content = $request->input('content-blog');

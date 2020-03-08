@@ -12,7 +12,7 @@
                 </div>
                 <form action="{{ url('/post') }}" method="post">
                     @csrf
-                    @if ($errors->any())
+                    {{--  @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -20,7 +20,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
+                    @endif  --}}
                     <div class="form-group">
                         <input type="text" class="form-control" name="title-blog" placeholder="Enter title">
                     </div>
